@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="model" default="$(find tf_tutorial)/urdf/myRobot.urdf.xacro"/>
+  <arg name="model_object" default="$(find tf_tutorial)/urdf/myObject.urdf.xacro"/>
+  <arg name="rvizconfig" default="$(find tf_tutorial)/rviz/myRobot.rviz" />
+  <arg name="limited" default="false"/>
+  <arg name="paused" default="false"/>
+  <arg name="gui" default="true"/>
+  <arg name="sim" default="true"/>
+  
+  <!-- startup simulated world -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+<!--         <arg name="world_name" value="$(find tf_example)/worlds/urdf_example.world"/> -->
+     <!-- more default parameters can be changed here -->
+  </include>
+  
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+  
+  <param name="object_description" command="$(find xacro)/xacro $(arg model_object)" />
+  
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" />
+    
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="spawn_gazebo_robot_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot -z 0.0" respawn="false" output="screen" />
+  
+  <node name="spawn_gazebo_object_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param object_description -model object -z 2.45 -x 0.23 -y 0.3" respawn="false" output="screen" />
+  
+  <node name="object_tf_publisher" pkg="tf_tutorial" type="publish_object_state.py"/>
+  
+    <!-- Fake Calibration -->
+  <node pkg="rostopic" type="rostopic" name="fake_joint_calibration"
+        args="pub /calibrated std_msgs/Bool true" />
+  
+  <!-- joint_state_controller -->
+  <rosparam file="$(find ur_gazebo)/controller/joint_state_controller.yaml" command="load"/>
+  <node name="joint_state_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn joint_state_controller" respawn="false" output="screen"/>
+
+  <!-- start this controller -->
+  <rosparam file="$(find ur_gazebo)/controller/arm_controller_ur3.yaml" command="load"/>
+  <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn arm_controller" respawn="false" output="screen"/>
+
+  <!-- load other controllers -->
+  <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false" output="screen" args="load joint_group_position_controller" />
+  
+</launch>
