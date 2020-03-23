@@ -6,7 +6,6 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /RobotState1
       Splitter Ratio: 0.5
     Tree Height: 728
   - Class: rviz/Selection
@@ -53,8 +52,64 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
-    - Attached Body Color: 150; 50; 150
-      Class: moveit_rviz_plugin/RobotState
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: true
+        base:
+          Value: true
+        base_link:
+          Value: true
+        ee_link:
+          Value: true
+        forearm_link:
+          Value: true
+        object_link:
+          Value: true
+        shoulder_link:
+          Value: true
+        table_link:
+          Value: true
+        tool0:
+          Value: true
+        upper_arm_link:
+          Value: true
+        world:
+          Value: true
+        wrist_1_link:
+          Value: true
+        wrist_2_link:
+          Value: true
+        wrist_3_link:
+          Value: true
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        world:
+          object_link:
+            {}
+          table_link:
+            base_link:
+              base:
+                {}
+              shoulder_link:
+                upper_arm_link:
+                  forearm_link:
+                    wrist_1_link:
+                      wrist_2_link:
+                        wrist_3_link:
+                          ee_link:
+                            {}
+                          tool0:
+                            {}
+      Update Interval: 0
+      Value: true
+    - Alpha: 1
+      Class: rviz/RobotModel
       Collision Enabled: false
       Enabled: true
       Links:
@@ -120,70 +175,12 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-      Name: RobotState
-      Robot Alpha: 1
+      Name: RobotModel
       Robot Description: robot_description
-      Robot State Topic: display_robot_state
-      Show All Links: true
-      Show Highlights: true
-      Value: true
-      Visual Enabled: true
-    - Class: rviz/TF
-      Enabled: true
-      Frame Timeout: 15
-      Frames:
-        All Enabled: true
-        base:
-          Value: true
-        base_link:
-          Value: true
-        ee_link:
-          Value: true
-        forearm_link:
-          Value: true
-        object_link:
-          Value: true
-        shoulder_link:
-          Value: true
-        table_link:
-          Value: true
-        tool0:
-          Value: true
-        upper_arm_link:
-          Value: true
-        world:
-          Value: true
-        wrist_1_link:
-          Value: true
-        wrist_2_link:
-          Value: true
-        wrist_3_link:
-          Value: true
-      Marker Scale: 1
-      Name: TF
-      Show Arrows: true
-      Show Axes: true
-      Show Names: true
-      Tree:
-        world:
-          object_link:
-            {}
-          table_link:
-            base_link:
-              base:
-                {}
-              shoulder_link:
-                upper_arm_link:
-                  forearm_link:
-                    wrist_1_link:
-                      wrist_2_link:
-                        wrist_3_link:
-                          ee_link:
-                            {}
-                          tool0:
-                            {}
+      TF Prefix: ""
       Update Interval: 0
       Value: true
+      Visual Enabled: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -212,25 +209,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 3.799203872680664
+      Distance: 1.0580819845199585
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.18218828737735748
-        Y: 0.24586594104766846
-        Z: -0.011288058944046497
+        X: 0.09318670630455017
+        Y: 0.17613585293293
+        Z: 2.1575701236724854
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.3797965049743652
+      Pitch: 0.9497965574264526
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.6353986859321594
+      Yaw: 1.5453990697860718
     Saved: ~
 Window Geometry:
   Displays:
