@@ -60,3 +60,11 @@ int main(int argc, char **argv) {
     
     return 0;
 }
+
+    joint_names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint,
+  wrist_3_joint]
+    points: 
+      - 
+        positions: [0.7, -0.3, -0.3, -0.1, 0.2, -0.3]
+        velocities: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+

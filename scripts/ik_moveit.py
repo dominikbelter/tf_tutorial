@@ -70,7 +70,6 @@ def main():
     iter_no = 0
     max_iter = 10
     while not rospy.is_shutdown():
-
         # set reference position of the gripper ( link)
         pose_ik = PoseStamped()
         pose_ik.header.frame_id = "base_link"
