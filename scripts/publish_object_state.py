@@ -26,7 +26,7 @@ class FixedTFBroadcaster:
       
       try:      
         response=model_state('object','world')
-      except rospy.ServiceException, e:
+      except rospy.ServiceException as e:
         rospy.loginfo("Service call failed: %s", e)
             
       if response.success:
