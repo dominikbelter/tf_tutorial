@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
     // node handler
     ros::NodeHandle n;
 
-    ctrlPub = n.advertise<control_msgs::FollowJointTrajectoryActionGoal>("/arm_controller/follow_joint_trajectory/goal", 1000);
+    ctrlPub = n.advertise<control_msgs::FollowJointTrajectoryActionGoal>("/pos_joint_traj_controller/follow_joint_trajectory/goal", 1000);
 
     ros::Rate loop_rate(10);
     

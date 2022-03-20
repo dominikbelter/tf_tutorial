@@ -2,18 +2,18 @@
 <robot name="myRobot" xmlns:xacro="http://ros.org/wiki/xacro">
   
   <xacro:include filename="$(find tf_tutorial)/urdf/table.urdf.xacro" />
-  <xacro:table />
+<!--   <xacro:table /> -->
   
-  <xacro:arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface"/>
+<!--   <xacro:arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface"/> -->
 
   <!-- common stuff -->
-  <xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro" />
+<!--   <xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro" /> -->
 
   <!-- ur3 -->
-  <xacro:include filename="$(find ur_description)/urdf/ur3.urdf.xacro" />
+<!--   <xacro:include filename="$(find ur_description)/urdf/ur3.urdf.xacro" /> -->
 
   <!-- arm -->
-  <xacro:arg name="kinematics_config" default="$(find ur_description)/config/ur3_default.yaml"/>
+  <!--<xacro:arg name="kinematics_config" default="$(find ur_description)/config/ur3_default.yaml"/>
   <xacro:ur3_robot prefix="" joint_limited="true"
     shoulder_pan_lower_limit="${-pi}" shoulder_pan_upper_limit="${pi}"
     shoulder_lift_lower_limit="${-pi}" shoulder_lift_upper_limit="${pi}"
@@ -23,12 +23,12 @@
     wrist_3_lower_limit="${-pi}" wrist_3_upper_limit="${pi}"
     transmission_hw_interface="$(arg transmission_hw_interface)"
     kinematics_file="${load_yaml('$(arg kinematics_config)')}"
-  />
+  />-->
 
-  <joint name="table_joint" type="fixed">
+  <!--<joint name="table_joint" type="fixed">
     <parent link="table_link" />
     <child link = "base_link" />
     <origin xyz="0.0 0.0 0.1" rpy="0.0 0.0 0.0" />
-  </joint>
+  </joint>-->
     
 </robot>

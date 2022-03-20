@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import roslib
 import sys
 import rospy
@@ -55,7 +55,7 @@ def main():
     moveit_commander.roscpp_initialize(sys.argv)
     rospy.init_node("ik_moveit")
 
-    pub = rospy.Publisher('/arm_controller/follow_joint_trajectory/goal', FollowJointTrajectoryActionGoal, queue_size=1)
+    pub = rospy.Publisher('/pos_joint_traj_controller/follow_joint_trajectory/goal', FollowJointTrajectoryActionGoal, queue_size=1)
 
     compute_ik_srv = rospy.ServiceProxy("/compute_ik", GetPositionIK)
     rospy.wait_for_service("/compute_ik")
@@ -64,7 +64,7 @@ def main():
     robot_commander = moveit_commander.RobotCommander()
 
     # compute reference position of the gripper ( link)
-    ref_pose = pq_to_pose([0.256, 0.294, 0.365], [0.707, 0.707, 0.0, 0.0])
+    ref_pose = pq_to_pose([0.24, 0.254, 0.1], [-1, 0.0, 0.0, 0.0])
 
     rate = rospy.Rate(10.0)
     iter_no = 0
