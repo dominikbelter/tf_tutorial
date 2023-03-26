@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'tf_listener'
+package_name = 'tf_tutorial'
 
 setup(
     name=package_name,
@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'py_tf_listener = tf_listener.py_tf_listener:main'
+            'py_tf_tutorial = tf_tutorial.py_tf_listener:main'
         ],
     },
 )
